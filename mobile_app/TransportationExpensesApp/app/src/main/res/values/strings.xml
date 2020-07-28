@@ -3,4 +3,6 @@
     <!-- メイン画面 -->
     <string name="main_button_ic_read">ICカードを読み取る</string>
     <string name="main_button_table_make">勤務表を作成する</string>
+    <!-- toolbar menu -->
+    <string name="main_toolbar_menu_title_history">履歴一覧</string>
 </resources>
