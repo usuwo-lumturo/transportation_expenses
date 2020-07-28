@@ -5,4 +5,6 @@
     <string name="main_button_table_make">勤務表を作成する</string>
     <!-- toolbar menu -->
     <string name="main_toolbar_menu_title_history">履歴一覧</string>
+    <!-- ICカード読み取り画面 -->
+    <string name="ic_read_text">ICカードをスマートフォンにかざしてください。</string>
 </resources>
