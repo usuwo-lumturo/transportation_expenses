@@ -12,11 +12,16 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".IcReadActivity"
+        <activity
+            android:name=".IcReadActivity"
             android:label="@string/title_ic_read_activity">
+        </activity>
+        <activity
+            android:name=".IcHistoryListActivity">
         </activity>
     </application>
 
