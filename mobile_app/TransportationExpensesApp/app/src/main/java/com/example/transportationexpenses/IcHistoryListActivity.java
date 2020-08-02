@@ -3,10 +3,12 @@ package com.example.transportationexpenses;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class IcHistoryListActivity extends AppCompatActivity {
@@ -25,5 +27,11 @@ public class IcHistoryListActivity extends AppCompatActivity {
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(
                 this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        IcHistoryListAdapter icHistoryListAdapter = new IcHistoryListAdapter(new ArrayList<>());
+        recyclerView.setAdapter(icHistoryListAdapter);
     }
 }
