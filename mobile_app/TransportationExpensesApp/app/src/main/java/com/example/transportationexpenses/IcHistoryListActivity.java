@@ -31,7 +31,12 @@ public class IcHistoryListActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        IcHistoryListAdapter icHistoryListAdapter = new IcHistoryListAdapter(new ArrayList<>());
+        IcHistoryListAdapter icHistoryListAdapter = new IcHistoryListAdapter(createData());
         recyclerView.setAdapter(icHistoryListAdapter);
+    }
+
+    private List<IcHistory> createData() {
+        List<IcHistory> icHistories = new ArrayList<>();
+        return icHistories;
     }
 }
