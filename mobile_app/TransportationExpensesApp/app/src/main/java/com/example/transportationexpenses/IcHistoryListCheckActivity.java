@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,12 @@ public class IcHistoryListCheckActivity extends AppCompatActivity {
         recyclerView.setAdapter(icHistoryListCheckAdapter);
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return true;
+    }
 
     private List<IcHistory> createData() {
         List<IcHistory> icHistories = new ArrayList<>();

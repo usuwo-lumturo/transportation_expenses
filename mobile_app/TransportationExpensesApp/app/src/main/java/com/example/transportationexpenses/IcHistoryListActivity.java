@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,15 @@ public class IcHistoryListActivity extends AppCompatActivity {
 
         IcHistoryListAdapter icHistoryListAdapter = new IcHistoryListAdapter(createData());
         recyclerView.setAdapter(icHistoryListAdapter);
+
+        Button saveButton = findViewById(R.id.ic_history_list_save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(IcHistoryListActivity.this, IcHistoryListCheckActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
