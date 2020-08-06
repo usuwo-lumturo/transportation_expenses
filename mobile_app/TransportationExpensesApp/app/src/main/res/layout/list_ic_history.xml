@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingVertical="@dimen/list_ic_history_constraint_padding_vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,7 +10,6 @@
         android:id="@+id/list_ic_history_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -20,14 +20,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <TextView
         android:id="@+id/list_ic_history_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="XXXX/XX/XX"
-        android:textSize="14sp"
+        android:textSize="@dimen/list_ic_history_textsize"
         app:layout_constraintEnd_toStartOf="@+id/list_ic_history_fare_start_line"
         app:layout_constraintStart_toEndOf="@+id/list_ic_history_checkbox_end_line"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +37,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="電車"
-        android:textSize="14sp"
+        android:textSize="@dimen/list_ic_history_textsize"
         app:layout_constraintEnd_toStartOf="@+id/list_ic_history_fare_start_line"
         app:layout_constraintStart_toEndOf="@+id/list_ic_history_checkbox_end_line"
         app:layout_constraintTop_toBottomOf="@+id/list_ic_history_date" />
@@ -47,7 +47,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="(XXX線)YYY駅 ~ (XXX線)ZZZ駅"
-        android:textSize="14sp"
+        android:textSize="@dimen/list_ic_history_textsize"
         app:layout_constraintEnd_toStartOf="@+id/list_ic_history_fare_start_line"
         app:layout_constraintStart_toEndOf="@+id/list_ic_history_checkbox_end_line"
         app:layout_constraintTop_toBottomOf="@+id/list_ic_history_transportation" />
@@ -57,17 +57,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.80" />
 
     <TextView
         android:id="@+id/list_ic_history_fare"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:text="¥100"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@id/list_ic_history_fare_start_line"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="@dimen/list_ic_history_fare_textsize"
+        app:layout_constraintBottom_toBottomOf="@+id/list_ic_history_stations"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/list_ic_history_fare_start_line" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
