@@ -20,4 +20,5 @@
     <string name="title_ic_history_list_check_activity">保存履歴確認</string>
     <string name="ic_history_list_check_header_text">以下の内容で保存します。\n※暗くなっている項目は勤務表に追加されません。</string>
     <string name="ic_history_list_check_save_button">保存を確定する</string>
+    <string name="ic_history_list_check_save_toast">履歴を保存しました。</string>
 </resources>
