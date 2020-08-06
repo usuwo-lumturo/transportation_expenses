@@ -12,6 +12,10 @@
     <string name="title_ic_history_list_activity">履歴一覧</string>
     <string name="ic_history_header_text">私用の履歴はチェックを外してください</string>
     <string name="ic_history_save_button">保存</string>
+    <string name="ic_history_list_alert_dialog_title">読み取り情報削除</string>
+    <string name="ic_history_list_alert_dialog_message">読み取った情報が消えてしまいます。戻ってよろしいですか？</string>
+    <string name="ic_history_list_alert_dialog_ok">OK</string>
+    <string name="ic_history_list_alert_dialog_cancel">キャンセル</string>
     <!-- 履歴保存確定画面 -->
     <string name="title_ic_history_list_check_activity">保存履歴確認</string>
     <string name="ic_history_list_check_header_text">以下の内容で保存します。\n※暗くなっている項目は勤務表に追加されません。</string>
