@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +35,12 @@ public class IcHistoryListActivity extends AppCompatActivity {
 
         IcHistoryListAdapter icHistoryListAdapter = new IcHistoryListAdapter(createData());
         recyclerView.setAdapter(icHistoryListAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.history_list_toolbar_menu, menu);
+        return true;
     }
 
     private List<IcHistory> createData() {

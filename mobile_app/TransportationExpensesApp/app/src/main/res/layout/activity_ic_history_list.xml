@@ -20,12 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="私用の履歴はチェックを外してください"
+        android:text="@string/ic_history_header_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/ic_history_list_toolbar"
-        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/ic_history_list_start_line_recyclerview"/>
 
     <View
+        android:id="@+id/ic_history_list_start_line_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
@@ -37,10 +39,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ic_history_list_save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_header_text" />
+        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_start_line_recyclerview" />
+
+    <Button
+        android:id="@+id/ic_history_list_save_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ic_history_save_button"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
