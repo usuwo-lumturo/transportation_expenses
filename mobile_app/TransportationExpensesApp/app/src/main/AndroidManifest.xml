@@ -21,7 +21,13 @@
             android:label="@string/title_ic_read_activity">
         </activity>
         <activity
-            android:name=".IcHistoryListActivity">
+            android:name=".IcHistoryListActivity"
+            android:label="@string/title_ic_history_list_activity">
+        </activity>
+        <activity
+            android:name=".IcHistoryListCheckActivity"
+            android:label="@string/title_ic_history_list_check_activity">
+
         </activity>
     </application>
 
