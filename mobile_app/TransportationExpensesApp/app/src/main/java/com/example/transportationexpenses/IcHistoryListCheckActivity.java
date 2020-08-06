@@ -37,6 +37,7 @@ public class IcHistoryListCheckActivity extends AppCompatActivity {
         recyclerView.setAdapter(icHistoryListCheckAdapter);
     }
 
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
