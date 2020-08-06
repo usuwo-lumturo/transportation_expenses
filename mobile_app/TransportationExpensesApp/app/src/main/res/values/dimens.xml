@@ -9,7 +9,14 @@
     <dimen name="ic_read_text_margin_horizontal">32dp</dimen>
     <dimen name="ic_read_text_textsize">20sp</dimen>
     <!-- ICカード履歴一覧画面 -->
+    <dimen name="ic_history_list_header_text_padding">16dp</dimen>
     <dimen name="list_ic_history_constraint_padding_vertical">4dp</dimen>
     <dimen name="list_ic_history_textsize">14sp</dimen>
     <dimen name="list_ic_history_fare_textsize">24sp</dimen>
+    <!-- 履歴保存確定画面 -->
+    <dimen name="ic_history_list_check_header_text_padding">16dp</dimen>
+    <dimen name="list_ic_history_check_constraint_padding_vertical">4dp</dimen>
+    <dimen name="list_ic_history_check_constraint_padding_horizontal">12dp</dimen>
+    <dimen name="list_ic_history_check_textsize">14sp</dimen>
+    <dimen name="list_ic_history_check_fare_textsize">24sp</dimen>
 </resources>

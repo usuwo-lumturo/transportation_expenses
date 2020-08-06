@@ -11,4 +11,7 @@
     <!-- ICカード履歴一覧画面 -->
     <string name="ic_history_header_text">私用の履歴はチェックを外してください</string>
     <string name="ic_history_save_button">保存</string>
+    <!-- 履歴保存確定画面 -->
+    <string name="ic_history_list_check_header_text">以下の内容で保存します。\n※暗くなっている項目は勤務表に追加されません。</string>
+    <string name="ic_history_list_check_save_button">保存を確定する</string>
 </resources>
