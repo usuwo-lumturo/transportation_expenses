@@ -10,28 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
         <activity
             android:name=".IcHistoryListActivity"
             android:label="@string/title_ic_history_list_activity">
-        </activity>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".IcReadActivity"
             android:label="@string/title_ic_read_activity">
         </activity>
         <activity
-            android:name=".IcHistoryListActivity"
-            android:label="@string/title_ic_history_list_activity">
+            android:name=".IcReadHistoryListActivity"
+            android:label="@string/title_ic_read_history_list_activity">
         </activity>
         <activity
-            android:name=".IcHistoryListCheckActivity"
-            android:label="@string/title_ic_history_list_check_activity">
-
+            android:name=".IcHistoryListSaveActivity"
+            android:label="@string/title_ic_history_list_save_activity">
         </activity>
     </application>
 

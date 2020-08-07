@@ -25,7 +25,7 @@ public class IcHistoryListActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        RecyclerView recyclerView = findViewById(R.id.ic_history_list_save_recyclerview);
+        RecyclerView recyclerView = findViewById(R.id.ic_history_list_recyclerview);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(
                 this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
