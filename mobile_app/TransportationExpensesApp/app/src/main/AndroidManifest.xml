@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+        <activity
+            android:name=".IcHistoryListActivity"
+            android:label="@string/title_ic_history_list_activity">
+        </activity>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
