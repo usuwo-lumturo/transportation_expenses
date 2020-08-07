@@ -2,57 +2,57 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingVertical="@dimen/list_ic_history_check_constraint_padding_vertical"
-    android:paddingHorizontal="@dimen/list_ic_history_check_constraint_padding_horizontal"
+    android:paddingVertical="@dimen/list_ic_history_save_constraint_padding_vertical"
+    android:paddingHorizontal="@dimen/list_ic_history_save_constraint_padding_horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/list_ic_history_check_date"
+        android:id="@+id/list_ic_history_save_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="XXXX/XX/XX"
-        android:textSize="@dimen/list_ic_history_check_textsize"
-        app:layout_constraintEnd_toStartOf="@+id/list_ic_history_check_fare_start_line"
+        android:textSize="@dimen/list_ic_history_save_textsize"
+        app:layout_constraintEnd_toStartOf="@+id/list_ic_history_save_fare_start_line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/list_ic_history_check_transportation"
+        android:id="@+id/list_ic_history_save_transportation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="電車"
-        android:textSize="@dimen/list_ic_history_check_textsize"
-        app:layout_constraintEnd_toStartOf="@+id/list_ic_history_check_fare_start_line"
+        android:textSize="@dimen/list_ic_history_save_textsize"
+        app:layout_constraintEnd_toStartOf="@+id/list_ic_history_save_fare_start_line"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_ic_history_check_date" />
+        app:layout_constraintTop_toBottomOf="@+id/list_ic_history_save_date" />
 
     <TextView
-        android:id="@+id/list_ic_history_check_stations"
+        android:id="@+id/list_ic_history_save_stations"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="(XXX線)YYY駅 ~ (XXX線)ZZZ駅"
-        android:textSize="@dimen/list_ic_history_check_textsize"
-        app:layout_constraintEnd_toStartOf="@+id/list_ic_history_check_fare_start_line"
+        android:textSize="@dimen/list_ic_history_save_textsize"
+        app:layout_constraintEnd_toStartOf="@+id/list_ic_history_save_fare_start_line"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_ic_history_check_transportation" />
+        app:layout_constraintTop_toBottomOf="@+id/list_ic_history_save_transportation" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/list_ic_history_check_fare_start_line"
+        android:id="@+id/list_ic_history_save_fare_start_line"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.80" />
 
     <TextView
-        android:id="@+id/list_ic_history_check_fare"
+        android:id="@+id/list_ic_history_save_fare"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="¥100"
-        android:textSize="@dimen/list_ic_history_check_fare_textsize"
-        app:layout_constraintBottom_toBottomOf="@+id/list_ic_history_check_stations"
+        android:textSize="@dimen/list_ic_history_save_fare_textsize"
+        app:layout_constraintBottom_toBottomOf="@+id/list_ic_history_save_stations"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/list_ic_history_check_fare_start_line" />
+        app:layout_constraintStart_toEndOf="@id/list_ic_history_save_fare_start_line" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

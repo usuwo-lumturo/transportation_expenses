@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IcHistoryListActivity">
+    tools:context=".IcReadHistoryListActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/ic_history_list_check_toolbar"
+        android:id="@+id/ic_history_list_save_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppToolbarTheme"
@@ -16,39 +16,39 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/ic_history_list_check_header_text"
+        android:id="@+id/ic_history_list_save_header_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/ic_history_list_check_header_text_padding"
-        android:text="@string/ic_history_list_check_header_text"
+        android:padding="@dimen/ic_history_list_save_header_text_padding"
+        android:text="@string/ic_history_list_save_header_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/ic_history_list_check_toolbar"
-        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_check_toolbar"
-        app:layout_constraintBottom_toTopOf="@id/ic_history_list_check_start_line_recyclerview"/>
+        app:layout_constraintStart_toStartOf="@+id/ic_history_list_save_toolbar"
+        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_save_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/ic_history_list_save_start_line_recyclerview"/>
 
     <View
-        android:id="@+id/ic_history_list_check_start_line_recyclerview"
+        android:id="@+id/ic_history_list_save_start_line_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/ic_history_list_check_recyclerview"
-        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_check_header_text" />
+        app:layout_constraintBottom_toTopOf="@+id/ic_history_list_save_recyclerview"
+        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_save_header_text" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ic_history_list_check_recyclerview"
+        android:id="@+id/ic_history_list_save_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scrollbars="vertical"
-        app:layout_constraintBottom_toTopOf="@id/ic_history_list_check_save_button"
+        app:layout_constraintBottom_toTopOf="@id/ic_history_list_save_save_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_check_start_line_recyclerview" />
+        app:layout_constraintTop_toBottomOf="@+id/ic_history_list_save_start_line_recyclerview" />
 
     <Button
-        android:id="@+id/ic_history_list_check_save_button"
+        android:id="@+id/ic_history_list_save_save_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/ic_history_list_check_save_button"
+        android:text="@string/ic_history_list_save_savebutton"
         android:textColor="@color/colorWhite"
         android:background="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"

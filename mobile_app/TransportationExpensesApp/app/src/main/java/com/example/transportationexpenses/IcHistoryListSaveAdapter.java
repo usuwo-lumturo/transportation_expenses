@@ -8,28 +8,26 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
-public class IcHistoryListAdapter extends RecyclerView.Adapter<IcHistoryListAdapter.ViewHolder> {
+public class IcHistoryListSaveAdapter extends RecyclerView.Adapter<IcHistoryListSaveAdapter.ViewHolder> {
 
     private List<IcHistory> icHistoryList;
 
-    public IcHistoryListAdapter(List<IcHistory> icHistories){
+    public IcHistoryListSaveAdapter(List<IcHistory> icHistories) {
         this.icHistoryList = icHistories;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public IcHistoryListSaveAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_ic_history, parent, false);
-        return new IcHistoryListAdapter.ViewHolder(view);
+                .inflate(R.layout.list_ic_history_save, parent, false);
+        return new IcHistoryListSaveAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull IcHistoryListSaveAdapter.ViewHolder holder, int position) {
         holder.dateText.setText(icHistoryList.get(position).getDate());
         holder.transportationText.setText(icHistoryList.get(position).getTransportation());
         holder.stationsText.setText(icHistoryList.get(position).getBoardingStation());
@@ -50,10 +48,10 @@ public class IcHistoryListAdapter extends RecyclerView.Adapter<IcHistoryListAdap
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            dateText = itemView.findViewById(R.id.list_ic_history_date);
-            transportationText = itemView.findViewById(R.id.list_ic_history_transportation);
-            stationsText = itemView.findViewById(R.id.list_ic_history_stations);
-            fareText = itemView.findViewById(R.id.list_ic_history_fare);
+            dateText = itemView.findViewById(R.id.list_ic_history_save_date);
+            transportationText = itemView.findViewById(R.id.list_ic_history_save_transportation);
+            stationsText = itemView.findViewById(R.id.list_ic_history_save_stations);
+            fareText = itemView.findViewById(R.id.list_ic_history_save_fare);
         }
     }
 }

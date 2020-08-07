@@ -10,24 +10,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class IcHistoryListCheckAdapter extends RecyclerView.Adapter<IcHistoryListCheckAdapter.ViewHolder> {
+public class IcReadHistoryListAdapter extends RecyclerView.Adapter<IcReadHistoryListAdapter.ViewHolder> {
 
     private List<IcHistory> icHistoryList;
 
-    public IcHistoryListCheckAdapter(List<IcHistory> icHistories) {
+    public IcReadHistoryListAdapter(List<IcHistory> icHistories){
         this.icHistoryList = icHistories;
     }
 
     @NonNull
     @Override
-    public IcHistoryListCheckAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list_ic_history_check, parent, false);
-        return new IcHistoryListCheckAdapter.ViewHolder(view);
+                .inflate(R.layout.list_ic_read_history, parent, false);
+        return new IcReadHistoryListAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull IcHistoryListCheckAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.dateText.setText(icHistoryList.get(position).getDate());
         holder.transportationText.setText(icHistoryList.get(position).getTransportation());
         holder.stationsText.setText(icHistoryList.get(position).getBoardingStation());
@@ -48,10 +48,10 @@ public class IcHistoryListCheckAdapter extends RecyclerView.Adapter<IcHistoryLis
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            dateText = itemView.findViewById(R.id.list_ic_history_check_date);
-            transportationText = itemView.findViewById(R.id.list_ic_history_check_transportation);
-            stationsText = itemView.findViewById(R.id.list_ic_history_check_stations);
-            fareText = itemView.findViewById(R.id.list_ic_history_check_fare);
+            dateText = itemView.findViewById(R.id.list_ic_read_history_date);
+            transportationText = itemView.findViewById(R.id.list_ic_read_history_transportation);
+            stationsText = itemView.findViewById(R.id.list_ic_read_history_stations);
+            fareText = itemView.findViewById(R.id.list_ic_read_history_fare);
         }
     }
 }
