@@ -23,4 +23,5 @@
     <string name="ic_history_list_save_savetoast">履歴を保存しました。</string>
     <!-- 履歴一覧画面 -->
     <string name="title_ic_history_list_activity">履歴一覧</string>
+    <string name="title_ic_history_table_make_activity">勤務表作成</string>
 </resources>
