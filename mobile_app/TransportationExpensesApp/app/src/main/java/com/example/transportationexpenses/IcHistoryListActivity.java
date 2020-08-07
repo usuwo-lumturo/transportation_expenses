@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class IcHistoryListActivity extends AppCompatActivity {
@@ -30,5 +33,23 @@ public class IcHistoryListActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        IcHistoryListAdapter icHistoryListAdapter = new IcHistoryListAdapter(createData());
+        recyclerView.setAdapter(icHistoryListAdapter);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+        return true;
+    }
+
+
+        private List<IcHistory> createData() {
+        List<IcHistory> icHistories = new ArrayList<>();
+
+        return icHistories;
     }
 }
