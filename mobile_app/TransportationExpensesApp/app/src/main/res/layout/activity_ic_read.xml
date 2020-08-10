@@ -27,4 +27,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ic_read_toolbar"/>
+
+    <!-- TODO: 読み取りできるようになったら消すボタン -->
+    <Button
+        android:id="@+id/ic_read_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="読み取り後の画面へ"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_read_text" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
