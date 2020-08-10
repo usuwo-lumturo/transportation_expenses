@@ -28,14 +28,52 @@
         app:layout_constraintTop_toBottomOf="@+id/list_ic_history_save_date" />
 
     <TextView
-        android:id="@+id/list_ic_history_save_stations"
+        android:id="@+id/list_ic_history_save_departure_line"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="(XXX線)YYY駅 ~ (XXX線)ZZZ駅"
+        android:text="(XXX線)"
         android:textSize="@dimen/list_ic_history_save_textsize"
-        app:layout_constraintEnd_toStartOf="@+id/list_ic_history_save_fare_start_line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_ic_history_save_transportation" />
+
+    <TextView
+        android:id="@+id/list_ic_history_save_on_station"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="YYY駅"
+        android:textSize="@dimen/list_ic_history_save_textsize"
+        app:layout_constraintStart_toEndOf="@+id/list_ic_history_save_departure_line"
+        app:layout_constraintTop_toBottomOf="@+id/list_ic_history_save_transportation" />
+
+    <TextView
+        android:id="@+id/list_ic_history_save_connect_stations"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="〜"
+        android:textSize="@dimen/list_ic_history_save_textsize"
+        app:layout_constraintStart_toEndOf="@id/list_ic_history_save_on_station"
+        app:layout_constraintTop_toBottomOf="@+id/list_ic_history_save_transportation" />
+
+    <TextView
+        android:id="@+id/list_ic_history_save_arrive_line"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="(XXX線)"
+        android:textSize="@dimen/list_ic_history_save_textsize"
+        app:layout_constraintStart_toEndOf="@+id/list_ic_history_save_connect_stations"
+        app:layout_constraintTop_toBottomOf="@+id/list_ic_history_save_transportation" />
+
+    <TextView
+        android:id="@+id/list_ic_history_save_off_station"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="ZZZ駅"
+        android:textSize="@dimen/list_ic_history_save_textsize"
+        app:layout_constraintEnd_toEndOf="@+id/list_ic_history_save_fare_start_line"
+        app:layout_constraintStart_toEndOf="@+id/list_ic_history_save_arrive_line"
+        app:layout_constraintTop_toBottomOf="@+id/list_ic_history_save_transportation" />
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/list_ic_history_save_fare_start_line"
@@ -51,7 +89,7 @@
         android:gravity="center_horizontal"
         android:text="¥100"
         android:textSize="@dimen/list_ic_history_save_fare_textsize"
-        app:layout_constraintBottom_toBottomOf="@+id/list_ic_history_save_stations"
+        app:layout_constraintBottom_toBottomOf="@+id/list_ic_history_save_on_station"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/list_ic_history_save_fare_start_line" />
 

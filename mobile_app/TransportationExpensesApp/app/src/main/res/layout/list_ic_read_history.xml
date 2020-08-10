@@ -84,6 +84,7 @@
         android:layout_height="wrap_content"
         android:text="ZZZ駅"
         android:textSize="@dimen/list_ic_read_history_textsize"
+        app:layout_constraintEnd_toStartOf="@+id/list_ic_read_history_fare_start_line"
         app:layout_constraintStart_toEndOf="@+id/list_ic_read_history_arrive_line"
         app:layout_constraintTop_toBottomOf="@+id/list_ic_read_history_transportation" />
 
