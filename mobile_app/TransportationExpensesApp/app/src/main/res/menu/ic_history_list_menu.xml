@@ -2,8 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/history_list_toolbar_menu_save"
-        android:icon="@drawable/ic_baseline_save_24"
-        android:title="@string/ic_read_history_save_button"
+        android:id="@+id/ic_history_list_menu_edit"
+        android:title="@string/ic_history_list_menu_edit"
+        android:theme = "@style/AppToolbarTheme"
         app:showAsAction="always"/>
+
 </menu>
