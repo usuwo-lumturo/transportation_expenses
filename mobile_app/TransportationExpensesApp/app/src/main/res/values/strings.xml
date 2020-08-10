@@ -24,4 +24,5 @@
     <!-- 履歴一覧画面 -->
     <string name="title_ic_history_list_activity">履歴一覧</string>
     <string name="title_ic_history_table_make_activity">勤務表作成</string>
+    <string name="ic_history_table_make_button">勤務表を作成する</string>
 </resources>

@@ -28,7 +28,7 @@
         android:id="@+id/ic_history_table_make_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="勤務表を作成する"
+        android:text="@string/ic_history_table_make_button"
         android:textColor="@color/colorWhite"
         android:background="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
