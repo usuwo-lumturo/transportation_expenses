@@ -24,4 +24,9 @@
     <dimen name="list_ic_history_constraint_padding_vertical">4dp</dimen>
     <dimen name="list_ic_history_textsize">14sp</dimen>
     <dimen name="list_ic_history_fare_textsize">24sp</dimen>
+    <!-- 勤務表作成画面 -->
+    <dimen name="list_ic_history_table_make_constraint_padding_horizontal">12dp</dimen>
+    <dimen name="list_ic_history_table_make_constraint_padding_vertical">4dp</dimen>
+    <dimen name="list_ic_history_table_make_textsize">14sp</dimen>
+    <dimen name="list_ic_history_table_make_fare_textsize">24sp</dimen>
 </resources>

@@ -30,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button tableMakeButton = findViewById(R.id.main_button_table_make);
+        tableMakeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, IcHistoryTableMakeActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

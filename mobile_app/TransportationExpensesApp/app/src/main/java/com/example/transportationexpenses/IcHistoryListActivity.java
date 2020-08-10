@@ -47,7 +47,7 @@ public class IcHistoryListActivity extends AppCompatActivity {
     }
 
 
-        private List<IcHistory> createData() {
+    private List<IcHistory> createData() {
         List<IcHistory> icHistories = new ArrayList<>();
 
         return icHistories;
