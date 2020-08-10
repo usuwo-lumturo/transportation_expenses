@@ -56,7 +56,7 @@ public class IcHistoryListSaveAdapter extends RecyclerView.Adapter<IcHistoryList
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             dateText = itemView.findViewById(R.id.list_ic_history_save_date);
-            transportationText = itemView.findViewById(R.id.list_ic_history_transportation);
+            transportationText = itemView.findViewById(R.id.list_ic_history_save_transportation);
             departureLineText = itemView.findViewById(R.id.list_ic_history_save_departure_line);
             getOnStationText = itemView.findViewById(R.id.list_ic_history_save_on_station);
             arriveLineText = itemView.findViewById(R.id.list_ic_history_save_arrive_line);
