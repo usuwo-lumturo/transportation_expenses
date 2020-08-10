@@ -53,12 +53,6 @@ public class IcReadHistoryListActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.history_list_toolbar_menu, menu);
-        return true;
-    }
-
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -79,7 +73,21 @@ public class IcReadHistoryListActivity extends AppCompatActivity {
 
     private List<IcHistory> createData() {
         List<IcHistory> icHistories = new ArrayList<>();
-       
+        for (int i = 3000; i < 4000; i++) {
+            String date = "XXXX/XX/XX";
+            String transportation = "電車";
+            String gettingOnStation = "YYY駅";
+            String gettingOffStation = "ZZZ駅";
+            String departureLine = "(XXX線)";
+            String arriveLine = "(XXX線)";
+            String fare = "¥" + i / 10;
+            String balance = "";
+            boolean isHistoryVisible = true;
+            IcHistory icHistory = new IcHistory(
+                    date, transportation, gettingOnStation, gettingOffStation,
+                    departureLine, arriveLine, fare, balance, isHistoryVisible);
+            icHistories.add(icHistory);
+        }
         return icHistories;
     }
 }
