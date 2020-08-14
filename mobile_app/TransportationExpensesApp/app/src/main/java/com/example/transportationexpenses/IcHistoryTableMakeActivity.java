@@ -3,9 +3,7 @@ package com.example.transportationexpenses;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,8 +13,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class IcHistoryTableMakeActivity extends AppCompatActivity {
@@ -31,16 +27,10 @@ public class IcHistoryTableMakeActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        RecyclerView recyclerView = findViewById(R.id.ic_history_table_make_recyclerview);
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(
-                this, DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(itemDecoration);
-
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        IcHistoryTableMakeAdapter icHistoryTableMakeAdapter = new IcHistoryTableMakeAdapter(createData());
-        recyclerView.setAdapter(icHistoryTableMakeAdapter);
+        TableMakePagerAdapter adapter = new TableMakePagerAdapter(getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.ic_history_table_make_view_pager);
+        viewPager.setOffscreenPageLimit(2);
+        viewPager.setAdapter(adapter);
 
         Button button = findViewById(R.id.ic_history_table_make_button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -77,8 +67,4 @@ public class IcHistoryTableMakeActivity extends AppCompatActivity {
                 .show();
     }
 
-    private List<IcHistory> createData() {
-        List<IcHistory> icHistories = new ArrayList<>();
-        return icHistories;
-    }
 }

@@ -41,8 +41,8 @@ public class TableMakeFragment2 extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        IcHistoryListAdapter icHistoryListAdapter = new IcHistoryListAdapter(createData());
-        recyclerView.setAdapter(icHistoryListAdapter);
+        IcHistoryTableMakeAdapter icHistoryTableMakeAdapter = new IcHistoryTableMakeAdapter(createData());
+        recyclerView.setAdapter(icHistoryTableMakeAdapter);
     }
 
     private List<IcHistory> createData() {
