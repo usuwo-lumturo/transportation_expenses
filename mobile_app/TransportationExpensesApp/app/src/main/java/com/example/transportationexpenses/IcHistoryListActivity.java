@@ -2,16 +2,14 @@ package com.example.transportationexpenses;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.Objects;
 
 public class IcHistoryListActivity extends AppCompatActivity {
@@ -26,16 +24,13 @@ public class IcHistoryListActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        RecyclerView recyclerView = findViewById(R.id.ic_history_list_recyclerview);
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(
-                this, DividerItemDecoration.VERTICAL);
-        recyclerView.addItemDecoration(itemDecoration);
+        IcHistoryPagerAdapter adapter = new IcHistoryPagerAdapter(getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.ic_history_list_view_pager);
+        viewPager.setOffscreenPageLimit(2);
+        viewPager.setAdapter(adapter);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-
-        IcHistoryListAdapter icHistoryListAdapter = new IcHistoryListAdapter(createData());
-        recyclerView.setAdapter(icHistoryListAdapter);
+        TabLayout tabLayout = findViewById(R.id.ic_history_list_tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 
@@ -53,10 +48,4 @@ public class IcHistoryListActivity extends AppCompatActivity {
         return true;
     }
 
-
-    private List<IcHistory> createData() {
-        List<IcHistory> icHistories = new ArrayList<>();
-
-        return icHistories;
-    }
 }
