@@ -49,21 +49,7 @@ public class IcHistoryFragment1 extends Fragment {
 
     private List<IcHistory> createData() {
         List<IcHistory> icHistories = new ArrayList<>();
-        for (int i = 3000; i < 4000; i++) {
-            String date = "XXXX/XX/XX";
-            String transportation = "電車";
-            String gettingOnStation = "YYY駅";
-            String gettingOffStation = "ZZZ駅";
-            String departureLine = "(XXX線)";
-            String arriveLine = "(XXX線)";
-            String fare = "¥" + i / 10;
-            String balance = "";
-            boolean isHistoryVisible = true;
-            IcHistory icHistory = new IcHistory(
-                    date, transportation, gettingOnStation, gettingOffStation,
-                    departureLine, arriveLine, fare, balance, isHistoryVisible);
-            icHistories.add(icHistory);
-        }
+
         return icHistories;
     }
 

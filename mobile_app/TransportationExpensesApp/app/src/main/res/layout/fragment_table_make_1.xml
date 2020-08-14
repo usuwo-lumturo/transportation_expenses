@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/ic_history_list_3"
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/table_make_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_constraintTop_toTopOf="parent"
@@ -10,7 +10,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ic_history_list_3_recyclerview"
+        android:id="@+id/table_make_1_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

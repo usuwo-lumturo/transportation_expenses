@@ -17,22 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class IcHistoryFragment3 extends Fragment {
+public class TableMakeFragment2 extends Fragment {
 
-    public IcHistoryFragment3() {
+    public TableMakeFragment2() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_ic_history_3, container, false);
+        return inflater.inflate(R.layout.fragment_table_make_2, container, false);
     }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView recyclerView = view.findViewById(R.id.ic_history_list_3_recyclerview);
+        RecyclerView recyclerView = view.findViewById(R.id.table_make_2_recyclerview);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(
                 Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
