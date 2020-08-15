@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Transportation Expenses</string>
+    <!-- メイン画面 -->
+    <string name="main_button_ic_read">ICカードを読み取る</string>
+    <string name="main_button_table_make">勤務表を作成する</string>
+    <!-- toolbar menu -->
+    <string name="main_toolbar_menu_title_history">履歴一覧</string>
+    <!-- ICカード読み取り画面 -->
+    <string name="title_ic_read_activity">ICカード読み取り</string>
+    <string name="ic_read_text">ICカードをスマートフォンにかざしてください。</string>
+    <!-- ICカード読み取り履歴一覧画面 -->
+    <string name="title_ic_read_history_list_activity">読み取り履歴リスト</string>
+    <string name="ic_read_history_header_text">私用の履歴はチェックを外してください</string>
+    <string name="ic_read_history_save_button">保存</string>
+    <string name="ic_read_history_list_alert_dialog_title">読み取り情報削除</string>
+    <string name="ic_read_history_list_alert_dialog_message">読み取った情報が消えてしまいます。戻ってよろしいですか？</string>
+    <string name="ic_read_history_list_alert_dialog_ok">OK</string>
+    <string name="ic_read_history_list_alert_dialog_cancel">キャンセル</string>
+    <!-- 履歴保存確定画面 -->
+    <string name="title_ic_history_list_save_activity">保存履歴確認</string>
+    <string name="ic_history_list_save_header_text">以下の内容で保存します。\n※暗くなっている項目は勤務表に追加されません。</string>
+    <string name="ic_history_list_save_savebutton">保存を確定する</string>
+    <string name="ic_history_list_save_savetoast">履歴を保存しました。</string>
+    <!-- 履歴一覧画面 -->
+    <string name="title_ic_history_list_activity">履歴一覧</string>
+    <string name="ic_history_list_menu_edit">編集</string>
+    <!-- 勤務表作成画面 -->
+    <string name="title_ic_history_table_make_activity">勤務表作成</string>
+    <string name="ic_history_table_make_button">勤務表を作成する</string>
 </resources>

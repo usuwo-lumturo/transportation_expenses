@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IcReadActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ic_read_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppToolbarTheme"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ic_read_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/ic_read_text_margin_horizontal"
+        android:layout_marginEnd="@dimen/ic_read_text_margin_horizontal"
+        android:text="@string/ic_read_text"
+        android:textSize="@dimen/ic_read_text_textsize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_read_toolbar"/>
+
+    <!-- TODO: 読み取りできるようになったら消すボタン -->
+    <Button
+        android:id="@+id/ic_read_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="読み取り後の画面へ"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_read_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
