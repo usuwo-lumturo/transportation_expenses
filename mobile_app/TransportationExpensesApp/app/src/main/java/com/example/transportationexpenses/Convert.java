@@ -25,6 +25,7 @@ public class Convert {
         ArrayList list = new ArrayList<IcHistory>();
         for(int i = 0;i < json.length() ; i++){
             list.add(new IcHistory(
+                    json.getJSONObject(i).getInt("連番"),
                     json.getJSONObject(i).getString("日付"),
                     json.getJSONObject(i).getString("交通手段"),
                     json.getJSONObject(i).getString("入駅順"),
@@ -50,6 +51,7 @@ public class Convert {
         JSONArray json_list = new JSONArray();
         for(int i = 0;i < list.size();i++) {
             JSONObject jsonobject = new JSONObject();
+            jsonobject.put("連番",list.get(i).getseqNo());
             jsonobject.put("交通手段",list.get(i).getTransportation());
             jsonobject.put("日付",list.get(i).getDate());
             jsonobject.put("入線区",list.get(i).getDepartureLine());

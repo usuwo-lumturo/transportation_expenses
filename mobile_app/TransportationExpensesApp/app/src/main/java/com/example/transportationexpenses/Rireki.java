@@ -3,10 +3,16 @@ package com.example.transportationexpenses;
 import android.content.Context;
 import android.util.SparseArray;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class Rireki {
+
     public int termId;      //端末種
     public int procId;      //処理
     public int year;        //年
@@ -20,18 +26,18 @@ public class Rireki {
     public int remain;      //残高
     public int seqNo;       //連番
     public int reasion;     //リージョン
-    public String stationCsv = "StationCode.json";
+    public String stationjson = "StationCode.json";
 
     public Rireki(){
     }
 
-    public static Rireki parse(byte[] res, int off) {
+    public static Rireki parse(byte[] res, int off) throws NoSuchMethodException, JSONException {
         Rireki self = new Rireki();
         self.init(res, off);
         return self;
     }
 
-    private void init(byte[] res, int off) {
+    private void init(byte[] res, int off) throws NoSuchMethodException, JSONException {
         this.termId = res[off+0]; //0: 端末種
         this.procId = res[off+1]; //1: 処理
         //2-3: ??
@@ -48,12 +54,12 @@ public class Rireki {
             this.kind = "電車";
             //this.kind = res[off+6] < 0x80 ? "JR" : "公営/私鉄" ;
         }
-        //線区、駅順を取得
+        // 線区、駅順を取得
         //System.out.println(MyApplication.getInstance());
         //ここでMyApplication.getInstance()に値が入らない！！（null）（泣）
 
-        //ココはなにをしている？
-        //getLineAndSt(MyApplication.getInstance(),res[off+6],res[off+7],res[off+8],res[off+9]);
+        //　乗降情報
+        getLineAndSt(res[off+6],res[off+7],res[off+8],res[off+9]);
 
         this.remain  = toInt(res, off, 11,10); //10-11: 残高 (little endian)
         this.seqNo   = toInt(res, off, 12,13,14); //12-14: 連番
@@ -78,21 +84,21 @@ public class Rireki {
 
     //ここでjsonの中身を作る（最終的なjson形式(string型)はmainのparse）
     //変数として扱いたい(「”連番”」など)場合は+"¥"連番¥""と書く
-    public String toString() {
-        String str = "{"
-                +"連番:" + seqNo
-                +",交通手段:"+kind
-                +",日付:"+year+"/"+month+"/"+day
-                +",入線区:"+inLine
-                +",入駅順:"+inStation
-                +",出線区:"+outLine
-                +",出駅順:"+outStation
-                +",支払金額:"
-                +",残高:"+remain+"円"
-                +"表示フラグ:"
-                +"}";
-        return str;
+    public IcHistory toIcHistory(){
+        IcHistory hist = new IcHistory(
+                seqNo,
+                year+":"+month+":"+day,
+                kind,
+                inStation,
+                outStation,
+                inLine,
+                outLine,
+                "0",
+                String.valueOf(remain),
+                true);
+        return hist;
     }
+
 
     public static final SparseArray<String> TERM_MAP = new SparseArray<String>();
     public static final SparseArray<String> PROC_MAP = new SparseArray<String>();
@@ -147,49 +153,33 @@ public class Rireki {
         PROC_MAP.put(133 , "精算 (他社入場精算)");
     }
 
-    public void getLineAndSt(byte inLine, byte inStation, byte outLine, byte outStation) {
+    public void getLineAndSt(byte inLine, byte inStation, byte outLine, byte outStation) throws NoSuchMethodException, JSONException {
         System.out.println("呼ばれた");
         String strinLine = String.format("%02x", inLine);
         String strinStation = String.format("%02x", inStation);
         String stroutLine = String.format("%02x", outLine);
         String stroutStation = String.format("%02x", outStation);
-        FileInputStream inputStream = ;
+        JSONArray sta_json = new JSONArray(StationCode.json_str);
 
+        String line = "";
+        boolean inOK = false;
+        boolean outOK = false;
+        String[] arr = null;
 
-        try {
-
-            String line = "";
-            int i = 0;
-            boolean inOK = false;
-            boolean outOK = false;
-            String[] arr = null;
-
-            while ((line = bufferReader.readLine()) != null) {
-                if (i == 0) {
-                    //arr = {"AreaCode","LineCode","StationCode","CompanyName","LineName","StationName","Note"};
-                    arr = line.split(",");
-                } else {
-                    String[] data = line.split(",");
-                    if (data[1] == strinLine && data[2] == strinStation) {
-                        this.inLine = data[4];
-                        this.inStation = data[5];
-                        System.out.println("inOK");
-                        inOK = true;
-                    } else if (data[1] == stroutLine && data[2] == stroutStation) {
-                        this.outLine = data[4];
-                        this.outStation = data[5];
-                        System.out.println("outOK");
-                        outOK = true;
-                    }
-                }
-                if (inOK == true && outOK == true) {
-                    break;
-                }
+        for(int i = 0;i < sta_json.length();i++){
+            if (strinLine == sta_json.getJSONObject(i).getString("LineCode") && strinStation == sta_json.getJSONObject(i).getString("StationCode")) {
+                this.inLine = sta_json.getJSONObject(i).getString("LineName");
+                this.inStation = sta_json.getJSONObject(i).getString("StationName");
+                System.out.println("inOK");
+                inOK = true;
+            } else if (stroutLine == sta_json.getJSONObject(i).getString("LineCode") && stroutStation == sta_json.getJSONObject(i).getString("StationCode")) {
+                this.outLine = sta_json.getJSONObject(i).getString("LineName");
+                this.outStation = sta_json.getJSONObject(i).getString("StationName");
+                System.out.println("outOK");
+                outOK = true;
             }
-            System.out.println("reader OK");
-            bufferReader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        System.out.println("reader OK");
     }
+
 }

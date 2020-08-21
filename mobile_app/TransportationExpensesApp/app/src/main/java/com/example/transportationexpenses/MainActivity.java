@@ -1,23 +1,35 @@
 package com.example.transportationexpenses;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.Objects;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -54,5 +66,56 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         return true;
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public String get_json(String strfilename){
+
+        //　FilereaderとBufferedRenderを準備
+        FileReader fr = null;
+        BufferedReader br = null;
+
+        // アセットファイル読み込み
+        AssetManager json_ast = getResources().getAssets();
+        InputStream is;
+
+        try{
+            // json objを開いて、BufferReaderへ
+            is = json_ast.open(strfilename);
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader bf = new BufferedReader(isr);
+
+            // BufferReaderから読み出す為、StringBuilderメソッドを作成
+            StringBuilder return_str = new StringBuilder();
+
+            // StringBuilderへ代入すべく1行目を読んだらWhileLoopを使って2行目以降を読む
+            String str = bf.readLine();
+            while(str != null){
+                return_str.append(str + System.getProperty("line.separator"));
+                str = bf.readLine();
+            }
+
+            // 返す
+            return return_str.toString();
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
+            return null;
+        } catch (IOException e) {
+            System.out.println(e);
+            return null;
+        } finally {
+            try {
+                if (br != null) {
+                    br.close();
+                }
+                if (fr != null) {
+                    fr.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

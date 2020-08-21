@@ -2,6 +2,8 @@ package com.example.transportationexpenses;
 
 public class IcHistory {
 
+    /** 購買番号 */
+    private int seqNo;
     /** 日付 */
     private String date;
     /** 交通手段 */
@@ -21,10 +23,12 @@ public class IcHistory {
     /** 表示フラグ */
     private boolean isHistoryVisible;
 
-    public IcHistory(String date, String transportation,
+    public IcHistory(int seqNo,
+                     String date, String transportation,
                      String gettingOnStation, String gettingOffStation,
                      String departureLine, String arriveLine, String fare,
                      String balance, boolean isHistoryVisible) {
+        this.seqNo = seqNo;
         this.date = date;
         this.transportation = transportation;
         this.gettingOnStation = gettingOnStation;
@@ -35,6 +39,8 @@ public class IcHistory {
         this.balance = balance;
         this.isHistoryVisible = isHistoryVisible;
     }
+
+    public int getseqNo(){ return seqNo; }
 
     public String getDate() {
         return date;
@@ -71,4 +77,6 @@ public class IcHistory {
     public boolean isHistoryVisible() {
         return isHistoryVisible;
     }
+
+    public void setFare(String n_fare){ this.fare = n_fare ;}
 }
