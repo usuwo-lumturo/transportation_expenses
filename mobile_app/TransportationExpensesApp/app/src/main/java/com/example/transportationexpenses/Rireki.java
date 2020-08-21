@@ -38,7 +38,7 @@ public class Rireki {
     }
 
     private void init(byte[] res, int off) throws NoSuchMethodException, JSONException {
-        this.termId = res[off+0]; //0: 端末種
+        this.termId = res[off]; //0: 端末種
         this.procId = res[off+1]; //1: 処理
         //2-3: ??
         int mixInt = toInt(res, off, 4,5);
@@ -68,9 +68,9 @@ public class Rireki {
 
     private int toInt(byte[] res, int off, int... idx) {
         int num = 0;
-        for (int i=0; i<idx.length; i++) {
+        for (int i = 0;i < idx.length; i++) {
             num = num << 8;
-            num += ((int)res[off+idx[i]]) & 0x0ff;
+            num += ((int)res[off + idx[i]]) & 0x0ff;
         }
         return num;
     }
@@ -159,7 +159,7 @@ public class Rireki {
         String strinStation = String.format("%02x", inStation);
         String stroutLine = String.format("%02x", outLine);
         String stroutStation = String.format("%02x", outStation);
-        JSONArray sta_json = new JSONArray(StationCode.json_str);
+        JSONArray sta_json = new JSONArray(StationCode.json_sta);
 
         String line = "";
         boolean inOK = false;

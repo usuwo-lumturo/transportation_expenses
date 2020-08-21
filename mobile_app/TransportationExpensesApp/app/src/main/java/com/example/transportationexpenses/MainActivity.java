@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StationCode.json_sta = get_json("StationCode.json");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // 真っ先にStationCodeのDBを読み出し。
     @RequiresApi(api = Build.VERSION_CODES.N)
     public String get_json(String strfilename){
 

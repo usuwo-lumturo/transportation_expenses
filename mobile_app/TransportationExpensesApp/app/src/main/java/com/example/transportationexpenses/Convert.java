@@ -1,5 +1,7 @@
 package com.example.transportationexpenses;
 
+import android.content.res.AssetManager;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,7 +24,7 @@ public class Convert {
           OUTPUT:ArrayList<IcHistory>
     */
     public ArrayList<IcHistory> ExportJSON2IcHistory(JSONArray json) throws JSONException {
-        ArrayList list = new ArrayList<IcHistory>();
+        ArrayList<IcHistory> list = new ArrayList();
         for(int i = 0;i < json.length() ; i++){
             list.add(new IcHistory(
                     json.getJSONObject(i).getInt("連番"),
@@ -65,5 +67,7 @@ public class Convert {
         }
         return json_list;
     }
+
+
 
 }
