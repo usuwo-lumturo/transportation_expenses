@@ -1,15 +1,9 @@
 package com.example.transportationexpenses;
 
-import android.content.Context;
 import android.util.SparseArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.lang.reflect.Method;
 
 public class Rireki {
 
@@ -46,20 +40,23 @@ public class Rireki {
         this.month = (mixInt >> 5) & 0x00f;
         this.day   = mixInt & 0x01f;
 
-        if (isBuppan(this.procId)) {
-            this.kind = "物販";
-        } else if (isBus(this.procId)) {
-            this.kind = "バス";
-        } else {
-            this.kind = "電車";
+        if (isStation(this.procId)) {
+            this.kind = "乗車";
+            System.out.println("機械コード:" + String.valueOf(this.procId));
+            //　乗降情報
+            getLineAndSt(res[off+6],res[off+7],res[off+8],res[off+9]);
             //this.kind = res[off+6] < 0x80 ? "JR" : "公営/私鉄" ;
+        } else {
+            this.kind = PROC_MAP.get(procId);
+            this.inLine=null;
+            this.inStation=null;
+            this.outLine=null;
+            this.outLine=null;
         }
         // 線区、駅順を取得
         //System.out.println(MyApplication.getInstance());
         //ここでMyApplication.getInstance()に値が入らない！！（null）（泣）
 
-        //　乗降情報
-        getLineAndSt(res[off+6],res[off+7],res[off+8],res[off+9]);
 
         this.remain  = toInt(res, off, 11,10); //10-11: 残高 (little endian)
         this.seqNo   = toInt(res, off, 12,13,14); //12-14: 連番
@@ -74,12 +71,8 @@ public class Rireki {
         }
         return num;
     }
-    private boolean isBuppan(int procId) {
-        return procId == 70 || procId == 73 || procId == 74
-                || procId == 75 || procId == 198 || procId == 203;
-    }
-    private boolean isBus(int procId) {
-        return procId == 13|| procId == 15|| procId ==  31|| procId == 35;
+    private boolean isStation(int procId) {
+        return procId == 1;
     }
 
     //ここでjsonの中身を作る（最終的なjson形式(string型)はmainのparse）
@@ -155,10 +148,10 @@ public class Rireki {
 
     public void getLineAndSt(byte inLine, byte inStation, byte outLine, byte outStation) throws NoSuchMethodException, JSONException {
         System.out.println("呼ばれた");
-        String strinLine = String.format("%02x", inLine);
-        String strinStation = String.format("%02x", inStation);
-        String stroutLine = String.format("%02x", outLine);
-        String stroutStation = String.format("%02x", outStation);
+        int strinLine = Integer.parseInt(String.format("%03d", inLine));
+        int strinStation = Integer.parseInt(String.format("%03d", inStation));
+        int stroutLine = Integer.parseInt(String.format("%03d", outLine));
+        int stroutStation = Integer.parseInt(String.format("%03d", outStation));
         JSONArray sta_json = new JSONArray(StationCode.json_sta);
 
         String line = "";
@@ -166,13 +159,15 @@ public class Rireki {
         boolean outOK = false;
         String[] arr = null;
 
+
         for(int i = 0;i < sta_json.length();i++){
-            if (strinLine == sta_json.getJSONObject(i).getString("LineCode") && strinStation == sta_json.getJSONObject(i).getString("StationCode")) {
+            int json_line = Integer.parseInt(sta_json.getJSONObject(i).getString("LineCode"));
+            int json_sta = Integer.parseInt(sta_json.getJSONObject(i).getString("StationCode"));
+            if (strinLine == json_line && strinStation == json_sta) {
                 this.inLine = sta_json.getJSONObject(i).getString("LineName");
                 this.inStation = sta_json.getJSONObject(i).getString("StationName");
                 System.out.println("inOK");
-                inOK = true;
-            } else if (stroutLine == sta_json.getJSONObject(i).getString("LineCode") && stroutStation == sta_json.getJSONObject(i).getString("StationCode")) {
+            } else if (stroutLine == json_line && stroutStation == json_sta) {
                 this.outLine = sta_json.getJSONObject(i).getString("LineName");
                 this.outStation = sta_json.getJSONObject(i).getString("StationName");
                 System.out.println("outOK");

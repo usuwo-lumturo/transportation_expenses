@@ -9,7 +9,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
+import android.nfc.Tag;
+import android.nfc.tech.NfcF;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,12 +23,48 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static com.example.transportationexpenses.NFC_GET.toHex;
+
 public class IcReadHistoryListActivity extends AppCompatActivity {
+
+    private static final String TAG = "NFCSample";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ic_read_history_list);
+        try{
+            // カードID取得。Activityはカード認識時起動に設定しているのでここで取れる。
+            byte[] felicaIDm = new byte[]{0};
+            Intent intent = getIntent();
+            Tag tag = (Tag) intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+            if (tag != null) {
+                felicaIDm = tag.getId();
+            }
+
+            // NFCモードをFモードとしてtagを渡す。
+            NfcF nfc = NfcF.get(tag);
+
+            nfc.connect();
+            byte[] req = NFC_GET.readWithoutEncryption(felicaIDm, 10);
+            Log.d(TAG, "req:" + toHex(req));
+            // カードにリクエスト送信
+            byte[] res = nfc.transceive(req);
+            Log.d(TAG, "res:"+toHex(res));
+            nfc.close();
+            // 結果を文字列に変換して表示
+            NFC_Data.NFC_Data = NFC_GET.parse(res);
+            Calculation.setFare(NFC_Data.NFC_Data);
+            /*
+            Intent next_intent = new Intent(IcReadActivity.this, IcReadHistoryListActivity.class);
+            startActivity(next_intent);
+            */
+        } catch (Exception e) {
+        Log.e(TAG, e.getMessage() , e);
+    }
+
+
+
+    setContentView(R.layout.activity_ic_read_history_list);
 
         Toolbar toolbar = findViewById(R.id.ic_read_history_list_toolbar);
         setSupportActionBar(toolbar);
@@ -39,13 +79,14 @@ public class IcReadHistoryListActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        IcReadHistoryListAdapter icReadHistoryListAdapter = new IcReadHistoryListAdapter(createData());
+        IcReadHistoryListAdapter icReadHistoryListAdapter = new IcReadHistoryListAdapter(createData(NFC_Data.NFC_Data));
         recyclerView.setAdapter(icReadHistoryListAdapter);
 
         Button saveButton = findViewById(R.id.ic_read_history_list_save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(IcReadHistoryListActivity.this, IcHistoryListSaveActivity.class);
                 startActivity(intent);
             }
@@ -71,8 +112,9 @@ public class IcReadHistoryListActivity extends AppCompatActivity {
         return true;
     }
 
-    private List<IcHistory> createData() {
+    private List<IcHistory> createData(ArrayList<IcHistory> NFC_icHistories) {
         List<IcHistory> icHistories = new ArrayList<>();
+        icHistories = NFC_icHistories;
         return icHistories;
     }
 }

@@ -23,6 +23,7 @@ public class Convert {
           INPUT:JSONArray json
           OUTPUT:ArrayList<IcHistory>
     */
+
     public ArrayList<IcHistory> ExportJSON2IcHistory(JSONArray json) throws JSONException {
         ArrayList<IcHistory> list = new ArrayList();
         for(int i = 0;i < json.length() ; i++){
@@ -36,7 +37,7 @@ public class Convert {
                     json.getJSONObject(i).getString("出線区"),
                     json.getJSONObject(i).get("運賃").toString(),
                     json.getJSONObject(i).get("残高").toString(),
-                    json.getJSONObject(i).getBoolean("残高")));
+                    json.getJSONObject(i).getBoolean("表示フラグ")));
         }
         return list;
     }
@@ -60,7 +61,7 @@ public class Convert {
             jsonobject.put("入駅順",list.get(i).getGettingOnStation());
             jsonobject.put("出線区",list.get(i).getArriveLine());
             jsonobject.put("出駅順",list.get(i).getGettingOffStation());
-            jsonobject.put("支払金額",Integer.parseInt(list.get(i).getFare()));
+            jsonobject.put("運賃",Integer.parseInt(list.get(i).getFare()));
             jsonobject.put("残高",list.get(i).getBalance());
             jsonobject.put("表示フラグ",list.get(i).isHistoryVisible());
             json_list.put(jsonobject);
