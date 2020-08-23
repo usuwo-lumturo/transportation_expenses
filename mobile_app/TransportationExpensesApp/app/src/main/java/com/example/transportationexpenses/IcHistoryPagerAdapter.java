@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 public class IcHistoryPagerAdapter extends FragmentPagerAdapter {
 
 
-    private CharSequence[] tabTitles = {"4月", "5月", "6月"};
+    private CharSequence[] tabTitles = {"2月", "3月", "4月"};
 
     public IcHistoryPagerAdapter(@NonNull FragmentManager fm) {
         super(fm);

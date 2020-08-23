@@ -18,8 +18,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -53,31 +56,36 @@ public class IcReadHistoryListActivity extends AppCompatActivity {
             nfc.close();
             // 結果を文字列に変換して表示
             NFC_Data.NFC_Data = NFC_GET.parse(res);
-            Calculation.setFare(NFC_Data.NFC_Data);
             /*
             Intent next_intent = new Intent(IcReadActivity.this, IcReadHistoryListActivity.class);
             startActivity(next_intent);
             */
         } catch (Exception e) {
-        Log.e(TAG, e.getMessage() , e);
-    }
+            Log.e(TAG, e.getMessage() , e);
+        }
 
 
-
-    setContentView(R.layout.activity_ic_read_history_list);
+        setContentView(R.layout.activity_ic_read_history_list);
 
         Toolbar toolbar = findViewById(R.id.ic_read_history_list_toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        RecyclerView recyclerView = findViewById(R.id.ic_read_history_list_recyclerview);
+        final RecyclerView recyclerView = findViewById(R.id.ic_read_history_list_recyclerview);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(
                 this, DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(itemDecoration);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+
+        Collections.reverse(NFC_Data.NFC_Data);
+        Calculation.setFare(NFC_Data.NFC_Data);
+        Marge.double_remove(DB_Controler.DB_Save);
+
+        NFC_Data.del_other();
+
 
         IcReadHistoryListAdapter icReadHistoryListAdapter = new IcReadHistoryListAdapter(createData(NFC_Data.NFC_Data));
         recyclerView.setAdapter(icReadHistoryListAdapter);
@@ -86,9 +94,8 @@ public class IcReadHistoryListActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(IcReadHistoryListActivity.this, IcHistoryListSaveActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(IcReadHistoryListActivity.this, IcHistoryListSaveActivity.class);
+            startActivity(intent);
             }
         });
     }
@@ -115,6 +122,7 @@ public class IcReadHistoryListActivity extends AppCompatActivity {
     private List<IcHistory> createData(ArrayList<IcHistory> NFC_icHistories) {
         List<IcHistory> icHistories = new ArrayList<>();
         icHistories = NFC_icHistories;
+        if(icHistories.get(icHistories.size()-1).getTransportation() != "乗車") icHistories.remove(icHistories.size()-1);
         return icHistories;
     }
 }

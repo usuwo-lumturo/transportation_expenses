@@ -24,22 +24,29 @@ public class Convert {
           OUTPUT:ArrayList<IcHistory>
     */
 
-    public ArrayList<IcHistory> ExportJSON2IcHistory(JSONArray json) throws JSONException {
-        ArrayList<IcHistory> list = new ArrayList();
-        for(int i = 0;i < json.length() ; i++){
-            list.add(new IcHistory(
-                    json.getJSONObject(i).getInt("連番"),
-                    json.getJSONObject(i).getString("日付"),
-                    json.getJSONObject(i).getString("交通手段"),
-                    json.getJSONObject(i).getString("入駅順"),
-                    json.getJSONObject(i).getString("出駅順"),
-                    json.getJSONObject(i).getString("入線区"),
-                    json.getJSONObject(i).getString("出線区"),
-                    json.getJSONObject(i).get("運賃").toString(),
-                    json.getJSONObject(i).get("残高").toString(),
-                    json.getJSONObject(i).getBoolean("表示フラグ")));
+    public static ArrayList<IcHistory> ExportJSON2IcHistory(JSONArray json){
+        try {
+            ArrayList<IcHistory> list = new ArrayList();
+            for(int i = 0;i < json.length() ; i++){
+                list.add(new IcHistory(
+                        json.getJSONObject(i).getInt("連番"),
+                        json.getJSONObject(i).getString("日付"),
+                        json.getJSONObject(i).getString("交通手段"),
+                        json.getJSONObject(i).getString("入駅順"),
+                        json.getJSONObject(i).getString("出駅順"),
+                        json.getJSONObject(i).getString("入線区"),
+                        json.getJSONObject(i).getString("出線区"),
+                        json.getJSONObject(i).get("運賃").toString(),
+                        json.getJSONObject(i).get("残高").toString(),
+                        json.getJSONObject(i).getBoolean("表示フラグ")));
+            }
+            return list;
+        } catch (JSONException e) {
+            e.printStackTrace();
+            ArrayList<IcHistory> list = new ArrayList();
+            list.add(new IcHistory(0,null,null,null,null,null,null,"0",null,false));
+            return list;
         }
-        return list;
     }
 
 
@@ -50,7 +57,7 @@ public class Convert {
           INPUT:JSONArray json
           OUTPUT:ArrayList<IcHistory>
      */
-    public JSONArray ExportIcHistory2JSONArray(ArrayList<IcHistory> list) throws JSONException {
+    public static JSONArray ExportIcHistory2JSONArray(ArrayList<IcHistory> list) throws JSONException {
         JSONArray json_list = new JSONArray();
         for(int i = 0;i < list.size();i++) {
             JSONObject jsonobject = new JSONObject();

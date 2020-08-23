@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -14,12 +15,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         StationCode.json_sta = get_json("StationCode.json");
+        DB_Controler.DB_Save = Convert.ExportJSON2IcHistory(get_db("DB.json"));
+        del_db("DB.json");
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -70,6 +79,23 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    public JSONArray get_db(String strfilename) {
+        try {
+            FileInputStream fileInputStream = openFileInput(strfilename);
+            String text = null;
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(fileInputStream, StandardCharsets.UTF_8));
+            String lineBuffer;
+            while ((lineBuffer = reader.readLine()) != null) {
+                text = lineBuffer;
+            }
+            JSONArray array = new JSONArray(text);
+            return array;
+        }catch (Exception e){
+            JSONArray array = new JSONArray();
+            return  array;
+        }
+    }
 
     // 真っ先にStationCodeのDBを読み出し。
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -119,6 +145,16 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    //ToDO:テスト実装じゃけん、必ず消すこと。
+    public void del_db(String strfilename) {
+        try {
+            FileOutputStream fileOutputStream = openFileOutput(strfilename,  Context.MODE_PRIVATE);
+            fileOutputStream.write("[\"\"]".getBytes());
+        }catch (Exception e){
+
         }
     }
 }

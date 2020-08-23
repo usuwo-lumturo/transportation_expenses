@@ -33,8 +33,18 @@ public class IcHistory {
         this.transportation = transportation;
         this.gettingOnStation = gettingOnStation;
         this.gettingOffStation = gettingOffStation;
-        this.departureLine = departureLine;
-        this.arriveLine = arriveLine;
+        if(departureLine != null){
+            this.departureLine = departureLine + "線";
+        }
+        else{
+            this.departureLine = null;
+        }
+        if(arriveLine != null){
+            this.arriveLine = arriveLine + "線";
+        }
+        else {
+            this.arriveLine = null;
+        }
         this.fare = fare;
         this.balance = balance;
         this.isHistoryVisible = isHistoryVisible;

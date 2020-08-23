@@ -46,7 +46,7 @@ public class TableMakeFragment1 extends Fragment {
 
     private List<IcHistory> createData() {
         List<IcHistory> icHistories = new ArrayList<>();
-
+        icHistories = DB_Controler.DB_Save;+
         return icHistories;
     }
 
